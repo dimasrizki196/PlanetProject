@@ -1,0 +1,49 @@
+#membuat data
+berkas = open("L200220196", "w")
+berkas.write("L200220196")
+berkas.write("\n05-08-2004")
+berkas.write("\nDimas Rizki")
+berkas.close()
+
+#menambahkan data
+berkas = open("L200220196", "a")
+berkas.write("\nBoyolali")
+berkas.close()
+
+#menyimpan data
+berkas = open("L200220196", "r")
+nim = berkas.readline()
+tgl = berkas.readline()
+nma = berkas.readline()
+kta = berkas.readline()
+
+#slicing format tanggal
+dd = tgl[:2]
+mm = tgl[3:5]
+yyyy = tgl[6:]
+
+tgl = mm + "/" + dd + "/" + yyyy
+
+#menampilkan
+print(nma)
+print(kta,tgl)
+print(nim)
+berkas.close()
+
+import shelve
+berkas = open("L200220196", "r")
+nim = berkas.readline()
+tgl = berkas.readline()
+nma = berkas.readline()
+kta = berkas.readline()
+berkas = shelve.open("Dimas Rizki")
+berkas["Biodata"] = [nim, tgl, nma, kta]
+berkas.close
+
+import shelve
+berkas = shelve.open("Dimas Rizki")
+print("NIM            : " + berkas["Biodata"][0])
+print("Tanggal Lahir  : " + berkas["Biodata"][1])
+print("Nama           : " + berkas["Biodata"][2])
+print("Kota Asal      : " + berkas["Biodata"][3])
+berkas.close()

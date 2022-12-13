@@ -1,0 +1,7 @@
+# menyimpan gambar dalam folder
+from PIL import Image
+
+img = Image.open("mangga.png")
+
+# menampilkan gambar
+img.show()

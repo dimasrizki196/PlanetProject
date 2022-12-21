@@ -1,0 +1,14 @@
+from PIL import Image
+
+class Planet :
+    def __init__(self, name, radius, mass, image):
+        self.name = name
+        self.radius = radius
+        self.mass = mass
+        self.image = Image.open(image)
+
+    def display_image(self):
+        self.image.show()
+
+earth = Planet("Saturnus", 6371, 5.972, "saturnus.jpg")
+earth.display_image()

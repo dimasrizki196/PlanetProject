@@ -1,0 +1,7 @@
+from PIL import Image
+
+Img = Image.open("uranus.jpg")
+print(Img.size)
+
+small_Img = Img.resize((200,400))
+small_Img.save("uranus_small.jpg")

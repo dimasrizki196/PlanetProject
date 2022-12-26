@@ -1,0 +1,15 @@
+from PIL import Image
+
+class Planet :
+    def __init__(self, name, radius, mass,orbit, image,):
+        self.name = name
+        self.radius = radius
+        self.orbit= orbit
+        self.mass = mass
+        self.image = Image.open(image)
+
+    def display_image(self):
+        self.image.show()
+
+jupiter = Planet("jupiter", 5768, 9.345, "sun" "jupiter.jpg")
+jupiter.display_image()

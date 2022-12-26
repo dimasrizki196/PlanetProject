@@ -1,7 +1,17 @@
-# menyimpan gambar dalam folder
 from PIL import Image
 
-img = Image.open("mangga.png")
+class Planet :
+    def __init__(self, name, radius, Diameter ,Temperature,mass, image,orbit):
+        self.name = name
+        self.radius = radius
+        self.orbit= orbit
+        self.mass = mass
+        self.Diameter = Diameter
+        self.temperature = Temperature
+        self.image = Image.open(image)
 
-# menampilkan gambar
-img.show()
+    def display_image(self):
+        self.image.show()
+
+mars = Planet("mars", 3.3895,6.779 ,"From -133°C to 27°C: in average -55°C.","6,39E23" ,"27.94 million km from sun" "jupiter.jpg")
+mars.display_image()

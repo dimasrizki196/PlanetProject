@@ -1,0 +1,37 @@
+# models.py
+from django.db import models
+
+class Planet(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='planet_images')
+    description = models.TextField()
+    
+    def __str__(self):
+        return self.name
+
+# views.py
+from django.shortcuts import render
+from .models import Planet
+from PIL import Image
+
+def planet_list(request):
+    planets = Planet.objects.all()
+    return render(request, 'planets/planet_list.html', {'planets': planets})
+
+def planet_detail(request, pk):
+    planet = Planet.objects.get(pk=pk)
+    # open the image using PIL
+    image = Image.open(planet.image.path)
+    return render(request, 'planets/planet_detail.html', {'planet': planet, 'image': image})
+
+# planet_list.html
+{% for planet in planets %}
+    <h2>{{ planet.name }}</h2>
+    <img src="{{ planet.image.url }}" alt="{{ planet.name }}" />
+    <p>{{ planet.description }}</p>
+{% endfor %}
+
+# planet_detail.html
+<h2>{{ planet.name }}</h2>
+<img src="{{ image.url }}" alt="{{ planet.name }}" />
+<p>{{ planet.description }}</p>
